@@ -1,6 +1,6 @@
 @echo off
 
-SET PROG="C:\Users\jgray\Documents\SourceCode\TFS\DesktopApps\Services\AuctionWatchNotifyService\obj\x86\Debug\AuctionWatchNotifyService.exe"
+SET PROG=""
 SET FIRSTPART=%WINDIR%"\Microsoft.NET\Framework\v"
 SET SECONDPART="\InstallUtil.exe"
 SET DOTNETVER=2.0.50727

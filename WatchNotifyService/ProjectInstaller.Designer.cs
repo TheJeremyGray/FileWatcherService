@@ -40,8 +40,8 @@
             // serviceInstaller1
             // 
             this.serviceInstaller1.Description = "Watches for Procureport Auction Results";
-            this.serviceInstaller1.DisplayName = "AuctionWatchNotifyService";
-            this.serviceInstaller1.ServiceName = "AuctionWatchNotifyService";
+            this.serviceInstaller1.DisplayName = "WatchNotifyService";
+            this.serviceInstaller1.ServiceName = "WatchNotifyService";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller

@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestWatchNotify</RootNamespace>
-    <AssemblyName>TestAuctionWatchNotify</AssemblyName>
+    <AssemblyName>TestWatchNotify</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -73,11 +73,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AuctionWatchNotifyService\WatchNotifyService.csproj">
+    <ProjectReference Include="..\WatchNotifyService\WatchNotifyService.csproj">
       <Project>{164FBCA7-40E9-41B1-B0DE-55DE383C75B5}</Project>
       <Name>WatchNotifyService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AuctionWatchNotify\WatchNotify.csproj">
+    <ProjectReference Include="..\WatchNotify\WatchNotify.csproj">
       <Project>{8BD51A2B-0C52-409B-B998-E131C64FBA4A}</Project>
       <Name>WatchNotify</Name>
     </ProjectReference>

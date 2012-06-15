@@ -38,7 +38,7 @@
             // 
             // Service1
             // 
-            this.ServiceName = "AuctionWatchNotifyService";
+            this.ServiceName = "WatchNotifyService";
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
 
         }

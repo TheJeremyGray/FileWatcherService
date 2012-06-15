@@ -213,7 +213,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\SetupAuctionWatchNotify.msi"
+        "OutputFilename" = "8:Debug\\SetupWatchNotify.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -250,7 +250,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\SetupAuctionWatchNotify.msi"
+        "OutputFilename" = "8:Release\\SetupWatchNotify.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -289,7 +289,7 @@
         {
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_0A8058F87E81498C87C4DDCD1039FA1D"
             {
-            "Name" = "8:Primary output from AuctionWatchNotifyService (Active)"
+            "Name" = "8:Primary output from WatchNotifyService (Active)"
             "Condition" = "8:"
             "Object" = "8:"
             "FileType" = "3:2"
@@ -303,7 +303,7 @@
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_550BB9D36CFC4640BD874E119C71C17A"
             {
-            "Name" = "8:Primary output from AuctionWatchNotifyService (Active)"
+            "Name" = "8:Primary output from WatchNotifyService (Active)"
             "Condition" = "8:"
             "Object" = "8:"
             "FileType" = "3:2"
@@ -317,7 +317,7 @@
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_648FE6B4BFC14E41949924661AAB43AD"
             {
-            "Name" = "8:Primary output from AuctionWatchNotifyService (Active)"
+            "Name" = "8:Primary output from WatchNotifyService (Active)"
             "Condition" = "8:"
             "Object" = "8:"
             "FileType" = "3:2"
@@ -331,7 +331,7 @@
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_81CA3361B46842C1BBCF4E0737387FA9"
             {
-            "Name" = "8:Primary output from AuctionWatchNotifyService (Active)"
+            "Name" = "8:Primary output from WatchNotifyService (Active)"
             "Condition" = "8:"
             "Object" = "8:"
             "FileType" = "3:2"
@@ -700,7 +700,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SetupAuctionWatchNotify"
+        "ProductName" = "8:SetupWatchNotify"
         "ProductCode" = "8:{69E2F62C-4F11-4A85-821A-142110815B54}"
         "PackageCode" = "8:{A5D6D265-FCBD-4F21-92AE-BC37B6AB1BF5}"
         "UpgradeCode" = "8:{ECD055E4-00A8-41ED-86A4-50B5479BEA61}"
@@ -713,7 +713,7 @@
         "Manufacturer" = "8:Default Company Name"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SetupAuctionWatchNotify"
+        "Title" = "8:SetupWatchNotify"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Default Company Name"
         "Keywords" = "8:"
@@ -1223,7 +1223,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3CB0C3C30B864C4BA4758F6CC3619227"
             {
-            "SourcePath" = "8:..\\AuctionWatchNotifyService\\obj\\x86\\Debug\\AuctionWatchNotifyService.exe"
+            "SourcePath" = "8:..\\WatchNotifyService\\obj\\x86\\Debug\\WatchNotifyService.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A52E4CACC5D34A2E827A5D4C799DA453"
