@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Choose>
+    <When Condition=" '$(TargetFrameworkVersion)'=='' ">
+      <PropertyGroup>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB8633FF-CEED-40EE-8D1A-CA1BF5678C42}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>FileHelpers</AssemblyName>
+    <AssemblyOriginatorKeyFile>FileHelpers.snk</AssemblyOriginatorKeyFile>
+    <!--  
+        Mono's Xbuild has a bug (https://bugzilla.novell.com/show_bug.cgi?id=542461)
+        which causes VS projects to not be correctly Strong Named. Hand-hacking a workaround:
+    -->
+    <KeyOriginatorFile>$(AssemblyOriginatorKeyFile)</KeyOriginatorFile>
+    <SignAssembly>true</SignAssembly>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FileHelpers</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
+    <StyleCopCacheResults>true</StyleCopCacheResults>
+    <StyleCopOutputFile>StyleCop.xml</StyleCopOutputFile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE;NET_2_0</DefineConstants>
+    <DocumentationFile>FileHelpers.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;NET_2_0</DefineConstants>
+    <DocumentationFile>FileHelpers.xml</DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\ConditionalRecordAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldValueDiscardedAttribute.cs" />
+    <Compile Include="Attributes\FieldIgnoredAttribute.cs" />
+    <Compile Include="Attributes\FieldOrderAttribute.cs" />
+    <Compile Include="Attributes\DelimitedRecordAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldAlignAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldArrayLength.cs" />
+    <Compile Include="Attributes\FieldAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldConverterAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldDelimiterAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldFixedLengthAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldNotInFileAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldInNewLineAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldNullValueAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldOptionalAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldQuotedAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FieldTrimAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\FixedLengthRecordAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\IgnoreCommentedLinesAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\IgnoreEmptyLinesAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\IgnoreFirstAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\IgnoreLastAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\TypedRecordAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\ConverterBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\ConvertHelpers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\EnumConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\RecordInfo.Factory.cs" />
+    <Compile Include="Core\ExtractInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\FieldInfoCacheManipulator.cs" />
+    <Compile Include="Core\ForwardReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\IRecordInfo.cs" />
+    <Compile Include="Core\IRecordReader.cs" />
+    <Compile Include="Core\RecordOperations.cs" />
+    <Compile Include="Core\ReflectionHelper.cs" />
+    <Compile Include="Dynamic\AttributesBuilder.cs" />
+    <Compile Include="Dynamic\ClassBuilder.cs" />
+    <Compile Include="Dynamic\ConverterBuilder.cs" />
+    <Compile Include="Dynamic\CsvClassBuilder.cs" />
+    <Compile Include="Dynamic\DelimitedClassBuilder.cs" />
+    <Compile Include="Dynamic\DelimitedFieldBuilder.cs" />
+    <Compile Include="Dynamic\FieldBuilder.cs" />
+    <Compile Include="Dynamic\FixedFieldBuilder.cs" />
+    <Compile Include="Dynamic\FixedLengthClassBuilder.cs" />
+    <Compile Include="Dynamic\XmlHelper.cs" />
+    <Compile Include="Engines\EventEngineBase.cs" />
+    <Compile Include="Engines\IFileHelperAsyncEngine.cs" />
+    <Compile Include="Engines\IFileHelperEngine.cs" />
+    <Compile Include="Enums\EngineState.cs" />
+    <Compile Include="Enums\LengthIndicatorType.cs" />
+    <Compile Include="Core\LineInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\NewLineDelimitedRecordReader.cs" />
+    <Compile Include="Core\PrefixedVariableLengthRecordReader.cs" />
+    <Compile Include="Core\RecordInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Csv\RecordIndexer.cs" />
+    <Compile Include="Engines\CommonEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\CsvEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\DelimitedFileEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\EngineBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\FileDiffEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\FileHelperAsyncEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\FileHelperEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\FileTransformEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\FixedFileEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Engines\MultiRecordEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\AlignMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\ConverterKind.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\ErrorMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\FixedMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\MultilineMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\NetLanguage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\NetVisibility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\QuoteMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\RecordCondition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\TrimMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorHandling\BadUsageException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorHandling\ConvertException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorHandling\ErrorInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorHandling\ErrorManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorHandling\FileHelpersException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorHandling\NullValueNotFoundException.cs" />
+    <Compile Include="ErrorHandling\RunTimeCompilationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\BeforeReadEventArgs.cs" />
+    <Compile Include="Events\BeforeWriteEventArgs.cs" />
+    <Compile Include="Events\Delegates.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\AfterReadEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\FileHelpersEventArgs.cs" />
+    <Compile Include="Events\ReadEventArgs.cs" />
+    <Compile Include="Events\AfterWriteEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\WriteEventArgs.cs" />
+    <Compile Include="Fields\DelimitedField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Fields\FieldBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Fields\FixedLengthField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormatDetector\DelimiterInfo.cs" />
+    <Compile Include="FormatDetector\FormatHint.cs" />
+    <Compile Include="FormatDetector\QuoteHelper.cs" />
+    <Compile Include="FormatDetector\RecordFormatInfo.cs" />
+    <Compile Include="FormatDetector\SmartFormatDetector.cs" />
+    <Compile Include="Helpers\Attributes.cs" />
+    <Compile Include="Helpers\ConditionHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\TypeHelper.cs" />
+    <Compile Include="Helpers\CsvOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ExHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ValidIdentifierValidator.cs" />
+    <Compile Include="Helpers\StreamHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\StringHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces\INotifyRead.cs" />
+    <Compile Include="Interfaces\ITransformable.cs" />
+    <Compile Include="Interfaces\IComparableRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces\INotifyWrite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterDetail\Common.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterDetail\MasterDetailEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterDetail\MasterDetails.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterDetail\RecordAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\GenerateMessages1.autogen.cs">
+      <AutoGen>True</AutoGen>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMessages.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\MessageBase.cs" />
+    <Compile Include="Options\DelimitedRecordOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\FixedRecordOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\RecordOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\ProgressEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\IgnoreInheritedClassAttribute.cs" />
+    <Compile Include="Sort\BigFileSorter.cs" />
+    <Compile Include="Sort\BigFileSorter.T.cs" />
+    <Compile Include="Sort\SorterRecord.cs" />
+    <Compile Include="Sort\SortQueue.T.cs" />
+    <Compile Include="Streams\InternalStringReader.cs" />
+    <Compile Include="Streams\StreamInfoProvider.cs" />
+    <Compile Include="Streams\InternalStreamReader.cs" />
+    <Compile Include="VersionInfo.cs" />
+    <None Include="Diagrams\EnginesDiagram.cd" />
+    <None Include="Diagrams\EnginesDiagramCompact.cd" />
+    <None Include="Diagrams\RunTimeRecords.cd" />
+    <None Include="FileHelpers.snk" />
+    <None Include="Messages\Errors.msg" />
+    <None Include="Messages\GenerateMessages.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMessages1.autogen.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

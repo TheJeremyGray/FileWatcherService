@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38971F6D-4C12-4C0D-8B79-D1C80DDC69D8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExamplesFramework</RootNamespace>
+    <AssemblyName>FileHelpersExamples</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\Examples\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\Examples\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Demos.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Devoo.WinForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Devoo\Devoo.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\FileHelpers\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Examples\10.Basic\10.ReadFileDelimited.cs" />
+    <Compile Include="Examples\10.Basic\20.WriteFileDelimited.cs" />
+    <Compile Include="Examples\10.Basic\30.ReadFileFixed.cs" />
+    <Compile Include="Examples\10.Basic\40.WriteFileFixed.cs" />
+    <Compile Include="Examples\12.Empty Values\20.ReadFileNullable.cs" />
+    <Compile Include="Examples\12.Empty Values\10.ReadFileFieldNullValue.cs" />
+    <Compile Include="Examples\12.Empty Values\05.ReadFileMissingValue.cs" />
+    <Compile Include="Examples\15.Attributes Record Class\10.DelimitedRecord.cs" />
+    <Compile Include="Examples\15.Attributes Record Class\30.FixedLengthRecord.cs" />
+    <Compile Include="Examples\15.Attributes Record Class\31.FixedLengthRecordLastVariable.cs" />
+    <Compile Include="Examples\16.Attributes Fields\10.FieldLength.cs" />
+    <Compile Include="Examples\20.Events\10.ReadBeforeEvent.cs" />
+    <Compile Include="Examples\20.Events\20.ReadAfterEventSample.cs" />
+    <Compile Include="Examples\20.Events\30.WriteBeforeEventSample.cs" />
+    <Compile Include="Examples\20.Events\40.WriteAfterEventSample.cs" />
+    <Compile Include="Examples\25.ErrorHandling\10.ErrorHandling.cs" />
+    <Compile Include="Examples\25.ErrorHandling\20.ErrorHandlingErrorMode.cs" />
+    <Compile Include="Examples\25.ErrorHandling\30.ErrorHandlingIgnoreMode.cs" />
+    <Compile Include="Examples\25.ErrorHandling\40.ErrorHandlingErrorModeSave.cs" />
+    <Compile Include="Examples\50.Advanced\10.MultipleDelimiters.cs" />
+    <Compile Include="Examples\50.Advanced\30.MultiRecordSample.cs" />
+    <Compile Include="Examples\18.Converters\50.EnumConverter.cs" />
+    <Compile Include="Examples\60.Sorting\10.SortBigFiles.cs" />
+    <Compile Include="Examples\60.Sorting\20.SortBigFilesString.cs" />
+    <Compile Include="Examples\60.Sorting\30.SortBigFilesString2.cs" />
+    <Compile Include="Examples\90.MasterDetail\10.SimpleMasterDetail.cs" />
+    <Compile Include="Examples\90.MasterDetail\20.MasterDetailSample2.cs" />
+    <Compile Include="Examples\ExampleGenerator.autogen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\ColorCode\CodeColorizer.cs" />
+    <Compile Include="Framework\ColorCode\Common\ExtensionMethods.cs" />
+    <Compile Include="Framework\ColorCode\Common\Guard.cs" />
+    <Compile Include="Framework\ColorCode\Common\ILanguageRepository.cs" />
+    <Compile Include="Framework\ColorCode\Common\LanguageId.cs" />
+    <Compile Include="Framework\ColorCode\Common\LanguageRepository.cs" />
+    <Compile Include="Framework\ColorCode\Common\ScopeName.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\CompiledLanguage.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\ILanguageCompiler.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\LanguageCompiler.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Asax.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Ashx.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Aspx.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\AspxCs.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\AspxVb.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Cpp.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\CSharp.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Css.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Html.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Java.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\JavaScript.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Php.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\PowerShell.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Sql.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\VbDotNet.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\Languages\Xml.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\RuleCaptures.cs" />
+    <Compile Include="Framework\ColorCode\Compilation\RuleFormats.cs" />
+    <Compile Include="Framework\ColorCode\Formatters.cs" />
+    <Compile Include="Framework\ColorCode\Formatting\HtmlFormatter.cs" />
+    <Compile Include="Framework\ColorCode\Formatting\TextInsertion.cs" />
+    <Compile Include="Framework\ColorCode\ICodeColorizer.cs" />
+    <Compile Include="Framework\ColorCode\IFormatter.cs" />
+    <Compile Include="Framework\ColorCode\ILanguage.cs" />
+    <Compile Include="Framework\ColorCode\IStyleSheet.cs" />
+    <Compile Include="Framework\ColorCode\LanguageRule.cs" />
+    <Compile Include="Framework\ColorCode\Languages.cs" />
+    <Compile Include="Framework\ColorCode\Parsing\ILanguageParser.cs" />
+    <Compile Include="Framework\ColorCode\Parsing\LanguageParser.cs" />
+    <Compile Include="Framework\ColorCode\Parsing\Scope.cs" />
+    <Compile Include="Framework\ColorCode\Style.cs" />
+    <Compile Include="Framework\ColorCode\StyleDictionary.cs" />
+    <Compile Include="Framework\ColorCode\StyleSheets.cs" />
+    <Compile Include="Framework\ColorCode\Styling\StyleSheets\DefaultStyleSheet.cs" />
+    <Compile Include="Framework\Controls\ExampleContainerWithHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Framework\Controls\ExampleHtmlRenderer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Framework\Controls\ExampleHtmlRenderer.Designer.cs">
+      <DependentUpon>ExampleHtmlRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\Controls\ExamplesContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Framework\Controls\ExamplesContainer.Designer.cs">
+      <DependentUpon>ExamplesContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\Themes\ExampleThemeBase.cs" />
+    <Compile Include="Framework\TreeView\ExampleSearchMode.cs" />
+    <Compile Include="Framework\TreeView\CategoryTreeNode.cs" />
+    <Compile Include="Framework\ExampleFile.cs" />
+    <Compile Include="Framework\ExampleBase.cs" />
+    <Compile Include="Framework\TreeView\ExampleTreeNode.cs" />
+    <Compile Include="Framework\HtmlWrapper.cs" />
+    <Compile Include="Framework\IHtmlWriter.cs" />
+    <Compile Include="Framework\NetLanguage.cs" />
+    <Compile Include="Framework\TreeView\ISearchableNode.cs" />
+    <Compile Include="Framework\TreeView\TreeViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\TreeView\TreeViewExamples.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Framework\ExampleCode.cs" />
+    <Compile Include="frmExamples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExamples.Designer.cs">
+      <DependentUpon>frmExamples.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Framework\Controls\ExampleContainerWithHeader.resx">
+      <DependentUpon>ExampleContainerWithHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Framework\Controls\ExampleHtmlRenderer.resx">
+      <DependentUpon>ExampleHtmlRenderer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Framework\Controls\ExamplesContainer.resx">
+      <DependentUpon>ExamplesContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExamples.resx">
+      <DependentUpon>frmExamples.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileHelpers\FileHelpers.csproj">
+      <Project>{EB8633FF-CEED-40EE-8D1A-CA1BF5678C42}</Project>
+      <Name>FileHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Examples\ExampleGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ExampleGenerator.autogen.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plugin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projection_screen_present.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projection_screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Examples\80.DynamicRecords\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Demos.ico" />
+    <None Include="Resources\page_down.gif" />
+    <None Include="Resources\page_up.gif" />
+    <None Include="Resources\page_left.gif" />
+    <None Include="Framework\ColorCode\ColorCode-License.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

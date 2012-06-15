@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project DefaultTargets="pack-release" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="Libs\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+	<UsingTask TaskName="NCoverExplorer.MSBuildTasks.NCoverExplorer" AssemblyFile="Libs\NCoverExplorer\NCoverExplorer.MSBuildTasks.dll" />
+	<UsingTask TaskName="NCoverExplorer.MSBuildTasks.NCover" AssemblyFile="Libs\NCoverExplorer\NCoverExplorer.MSBuildTasks.dll" />
+	<UsingTask TaskName="NCoverExplorer.MSBuildTasks.NUnitProject" AssemblyFile="Libs\NCoverExplorer\NCoverExplorer.MSBuildTasks.dll" />
+
+	<Import Project="Build\CurrentVersion.msbuild" />
+
+	<ItemGroup>
+    <DebugFiles Include="Debug\**\*.*" />
+		<RootFiles Include="*.url" />
+		<RootFiles2 Include="*.txt" />
+		<ReleaseFiles Include="Release\**\*.*" />
+		<OutputFiles Include="Output\**\*.*" />
+	</ItemGroup>
+
+	<Target Name="common">
+		<Message Text="##teamcity[buildNumber '$(CurrentVersion) ({build.number})']" />
+		<Copy SourceFiles="Build\VersionInfo.cs" DestinationFolder="FileHelpers" />
+		<Exec Command="Libs\FileReplace.exe &quot;FileHelpers\VersionInfo.cs&quot; &quot;-CustomVersion-&quot; &quot;$(FullCurrentVersion)&quot;" />
+		<Delete Files="@(DebugFiles)" />
+		<Delete Files="@(ReleaseFiles)" />
+		<Delete Files="@(OutputFiles)" />
+		
+		<Exec Command="RmDir /S /Q Debug" />
+		<Exec Command="RmDir /S /Q Release" />
+		<Exec Command="RmDir /S /Q Output" />
+		
+		<MakeDir Directories="Output" ContinueOnError="True" />
+		<MakeDir Directories="Release" ContinueOnError="True" />
+		<MakeDir Directories="Debug" ContinueOnError="True" />
+	</Target>
+
+	<Target Name="release" DependsOnTargets="common">
+		<MSBuild Projects="FileHelpers.OnlyLib.sln" Properties="Configuration=Release" />
+		
+		<MakeDir Directories="Release\Binaries\2.0" ContinueOnError="True" />
+		<Exec Command="copy /Y /D Release\Bin\*.* Release\Binaries\2.0"/>
+		<Exec Command="RmDir /S /Q Release\Bin" />
+		
+		<Exec Command="$(MSBuildToolsPath)\msbuild.exe FileHelpers.sln /p:TargetFrameworkVersion=v4.0 /t:rebuild /p:Configuration=Release "/>
+		
+		<MakeDir Directories="Release\Binaries\4.0" ContinueOnError="True" />
+		<Exec Command="copy /Y /D Release\Bin\*.* Release\Binaries\4.0"/>
+		<Exec Command="RmDir /S /Q Release\Bin" />
+
+		<Copy SourceFiles="@(RootFiles)" DestinationFolder="Release" />		
+		<Copy SourceFiles="@(RootFiles2)" DestinationFolder="Release" />		
+		
+	</Target>
+
+	<Target Name="compilerelease2" DependsOnTargets="common">
+		<MSBuild Projects="FileHelpers.OnlyLib.sln" Properties="Configuration=Release" />
+	</Target>
+
+	<Target Name="debug" DependsOnTargets="common">
+		<MSBuild Projects="FileHelpers.OnlyLib.sln" Properties="Configuration=Debug" />
+		
+		<MakeDir Directories="Debug\Binaries\2.0" ContinueOnError="True" />
+		<Exec Command="copy /Y /D Debug\Bin\*.* Debug\Binaries\2.0"/>
+		<Exec Command="RmDir /S /Q Debug\Bin" />
+		
+		<Exec Command="$(MSBuildToolsPath)\msbuild.exe FileHelpers.sln /p:TargetFrameworkVersion=v4.0 /t:rebuild /p:Configuration=Debug "/>
+		
+		<MakeDir Directories="Debug\Binaries\4.0" ContinueOnError="True" />
+		<Exec Command="copy /Y /D Debug\Bin\*.* Debug\Binaries\4.0"/>
+		<Exec Command="RmDir /S /Q Debug\Bin" />
+		
+	    <Copy SourceFiles="@(RootFiles)" DestinationFolder="Debug" />		
+	    <Copy SourceFiles="@(RootFiles2)" DestinationFolder="Debug" />		
+	</Target>
+
+	<Target Name="pack-all" DependsOnTargets="common;pack-debug;pack-release">
+	</Target>
+
+	<Target Name="pack-release" DependsOnTargets="release">
+		<ItemGroup>
+        	<DocFile Include="Help\FileHelpers.chm"/>
+    	</ItemGroup>
+
+        <Copy SourceFiles="@(DocFile)" DestinationFolder="Release\Docs" />
+
+		<ItemGroup>
+			<DeleteXml Include="Release\Examples\FileHelpers.xml" />
+			<DeleteXml Include="Release\ExamplesOld\FileHelpers.xml" />
+			<DeleteXml Include="Release\ExamplesOld\FileHelpers.DataLink.xml" />
+			<DeleteXml Include="Release\ExamplesOld\IronPython\FileHelpers.xml" />
+			<DeleteXml Include="Release\Wizard\FileHelpers.xml" />
+		</ItemGroup>
+		<Delete Files="@(DeleteXml)" />
+
+		<ItemGroup>
+			<ReleaseFiles2 Include="Release\**\*.*" />
+		</ItemGroup>
+		
+		<Zip Files="@(ReleaseFiles2)" WorkingDirectory="Release" ZipFileName="Output\FileHelpers_$(CurrentVersion)_ReleaseBuild.zip" />
+	</Target>
+
+	<Target Name="pack-debug" DependsOnTargets="debug">
+	
+		<ItemGroup>
+        	<DocFile Include="Help\FileHelpers.chm"/>
+    	</ItemGroup>
+
+        <Copy SourceFiles="@(DocFile)" DestinationFolder="Debug\Docs" />
+        
+		<ItemGroup>
+			<DeleteXml Include="Debug\Examples\FileHelpers.xml" />
+			<DeleteXml Include="Debug\ExamplesOld\FileHelpers.xml" />
+			<DeleteXml Include="Debug\ExamplesOld\FileHelpers.DataLink.xml" />
+			<DeleteXml Include="Debug\ExamplesOld\IronPython\FileHelpers.xml" />
+			<DeleteXml Include="Debug\Wizard\FileHelpers.xml" />
+
+			<DeleteXml Include="Debug\Examples\FileHelpers.pdb" />
+			<DeleteXml Include="Debug\ExamplesOld\FileHelpers.pdb" />
+			<DeleteXml Include="Debug\ExamplesOld\FileHelpers.DataLink.pdb" />
+			<DeleteXml Include="Debug\ExamplesOld\FileHelpers.Demos.pdb" />
+			<DeleteXml Include="Debug\ExamplesOld\IronPython\Demo.IronPython.Hosting.pdb" />
+			<DeleteXml Include="Debug\ExamplesOld\IronPython\FileHelpers.pdb" />
+			<DeleteXml Include="Debug\Wizard\FileHelpers.pdb" />
+			<DeleteXml Include="Debug\Wizard\FileHelpersWizard.pdb" />
+			<DeleteXml Include="Debug\Examples\FileHelpersExamples.pdb" />
+			
+		</ItemGroup>
+		<Delete Files="@(DeleteXml)" />
+		
+		<ItemGroup>
+			<DebugFiles2 Include="Debug\**\*.*" />
+		</ItemGroup>
+
+		<Zip Files="@(DebugFiles2)" WorkingDirectory="Debug" ZipFileName="Output\FileHelpers_$(CurrentVersion)_DebugBuild.zip" />
+	</Target>
+
+	<PropertyGroup>
+		<CustomProjectPath>d:\Desarrollo\Devoo\FileHelpers\trunk\FileHelpers.shfbproj</CustomProjectPath>
+	</PropertyGroup>
+
+	<Import Project="FileHelpers.shfbproj" />
+	<Target Name="doc" DependsOnTargets="release">
+		<CallTarget Targets="Build" />
+	</Target>
+
+	<Target Name="test-gallio" DependsOnTargets="release"></Target>
+
+	<Target Name="coverage" DependsOnTargets="debug">
+		<ItemGroup>
+			<CoverageFile Include="$(MSBuildProjectDirectory)\Coverage\Coverage.xml" />
+		</ItemGroup>
+		<MakeDir Directories="$(MSBuildProjectDirectory)\Coverage" ContinueOnError="True" />
+		<NCover ToolPath="Libs\NCover\" CommandLineExe="Libs\NUnit\nunit-console-x86.exe" CoverageFile="@(CoverageFile)" AssemblyList="FileHelpers" CommandLineArgs="/noshadow FileHelpers.Tests\Release\FileHelpers.Tests.dll" />
+		
+		  <PropertyGroup> 
+               <CoverageExclusions> 
+                  <CoverageExclusion>
+                      <ExclusionType>Class</ExclusionType>
+                      <Pattern>.*TypesOfMessages.*</Pattern> 
+                      <IsRegex>true</IsRegex> 
+                  </CoverageExclusion> 
+               </CoverageExclusions> 
+           </PropertyGroup>
+
+
+		<NCoverExplorer 
+				 ToolPath="Libs\NCoverExplorer\" 
+				 ProjectName="FileHelpers"
+				 OutputDir="$(MSBuildProjectDirectory)\Coverage" 
+				 CoverageFiles="@(CoverageFile)" 
+				 SatisfactoryCoverage="80" 
+				 HtmlReportName="CoverageSummary.html" 
+				 Exclusions="$(CoverageExclusions)"
+				 ShowExcluded="False"
+				 ReportType="ModuleClassFunctionSummary" 
+				 />
+		 
+		<Delete Files="@(CoverageFile)" ContinueOnError="True" />
+	</Target>
+</Project>

@@ -1,0 +1,4 @@
+
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe C:\Users\jgray\Documents\SourceCode\TFS\DesktopApps\Services\Procureport\AuctionWatchNotifyService\bin\Debug\AuctionWatchNotifyService.exe
+
+
